@@ -1,0 +1,13 @@
+services:
+  filebrowser:
+    image: 'filebrowser/filebrowser:${FILEBROWSER_IMAGE_VERSION:-latest}'
+    restart: unless-stopped
+    user: '${PUID:-1000}:${PGID:-100}'
+    environment:
+      - 'TZ=${TZ:-Asia/Shanghai}'
+    ports:
+      - '8083:80'
+    volumes:
+      - ${FILEBROWSER_VOLUME:-.}/conf:/config
+      - ${FILEBROWSER_VOLUME:-.}/data:/database
+      - ${TOWER_VOLUME:-/mnt/user}:/srv
