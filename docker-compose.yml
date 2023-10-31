@@ -1,2 +1,3 @@
 include:
   - path: 'qbittorrent-pt/docker-compose.qbittorrent-pt.yml'
+  - path: 'qbittorrent/docker-compose.qbittorrent.yml'
