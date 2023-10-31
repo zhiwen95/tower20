@@ -1,17 +1,17 @@
 services:
   qbittorrent-pt:
-      image: 'linuxserver/qbittorrent:${QBITTORRENT_IMAGE_VERSION:-latest}'
-      restart: unless-stopped
-      environment:
-        - 'TZ=${TZ:-Asia/Shanghai}'
-        - 'PUID=${PUID:-1000}'
-        - 'PGID=${PGID:-100}'
-        - 'WEBUI_PORT=8081'
-      ports:
-        - '8081:8081'
-        - '18081:18081'
-        - '18081:18081/udp'
-      volumes:
-        - ${QBITTORRENT_PT_VOLUME:-.}/conf:/config
-        - ${QBITTORRENT_PT_VOLUME:-.}/incomplete:/mnt/incomplete
-        - ${MEDIA_VOLUME:-/mnt/user/media}:/mnt/user/media
+    image: 'linuxserver/qbittorrent:${QBITTORRENT_IMAGE_VERSION:-latest}'
+    restart: unless-stopped
+    environment:
+      - 'TZ=${TZ:-Asia/Shanghai}'
+      - 'PUID=${PUID:-1000}'
+      - 'PGID=${PGID:-100}'
+      - 'WEBUI_PORT=8081'
+    ports:
+      - '8081:8081'
+      - '18081:18081'
+      - '18081:18081/udp'
+    volumes:
+      - ${QBITTORRENT_PT_VOLUME:-.}/conf:/config
+      - ${QBITTORRENT_PT_VOLUME:-.}/incomplete:/mnt/incomplete
+      - ${MEDIA_VOLUME:-/mnt/user/media}:/mnt/user/media
