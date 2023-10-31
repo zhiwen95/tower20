@@ -6,10 +6,11 @@ services:
         - 'TZ=${TZ:-Asia/Shanghai}'
         - 'PUID=${PUID:-1000}'
         - 'PGID=${PGID:-100}'
+        - 'WEBUI_PORT=8081'
       ports:
-        - '8001:8001'
-        - '9001:9001'
-        - '9001:9001/udp'
+        - '8081:8081'
+        - '18081:18081'
+        - '18081:18081/udp'
       volumes:
         - ${QBITTORRENT_PT_VOLUME:-.}/conf:/config
         - ${QBITTORRENT_PT_VOLUME:-.}/incomplete:/mnt/incomplete
