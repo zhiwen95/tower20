@@ -1,6 +1,6 @@
 services:
   qbittorrent-pt:
-      image: 'linuxserver/qbittorrent:latest${QBITTORRENT_IMAGE_VERSION:-latest}'
+      image: 'linuxserver/qbittorrent:${QBITTORRENT_IMAGE_VERSION:-latest}'
       restart: unless-stopped
       environment:
         - 'TZ=${TZ:-Asia/Shanghai}'
