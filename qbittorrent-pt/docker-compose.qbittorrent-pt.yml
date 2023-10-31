@@ -1,0 +1,16 @@
+services:
+  qbittorrent-pt:
+      image: 'linuxserver/qbittorrent:latest${QBITTORRENT_IMAGE_VERSION:-latest}'
+      restart: unless-stopped
+      environment:
+        - 'TZ=${TZ:-Asia/Shanghai}'
+        - 'PUID=${PUID:-1000}'
+        - 'PGID=${PGID:-100}'
+      ports:
+        - '8001:8001'
+        - '9001:9001'
+        - '9001:9001/udp'
+      volumes:
+        - ${QBITTORRENT_PT_VOLUME:-.}/conf:/config
+        - ${QBITTORRENT_PT_VOLUME:-.}/incomplete:/mnt/incomplete
+        - ${MEDIA_VOLUME:-/mnt/user/media}:/mnt/user/media
