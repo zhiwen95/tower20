@@ -2,9 +2,10 @@ services:
   filebrowser:
     image: 'filebrowser/filebrowser:${FILEBROWSER_IMAGE_VERSION:-s6}'
     restart: unless-stopped
-    user: '${PUID:-1000}:${PGID:-100}'
     environment:
       - 'TZ=${TZ:-Asia/Shanghai}'
+      - 'UID=${PUID:-1000}'
+      - 'GID=${PGID:-100}'
       - 'PUID=${PUID:-1000}'
       - 'PGID=${PGID:-100}'
     ports:
