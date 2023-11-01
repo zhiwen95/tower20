@@ -2,7 +2,6 @@ services:
   seafile-db:
     image: 'mariadb:${SEAFILE_DB_IMAGE_VERSION:-latest}'
     restart: unless-stopped
-    user: '${PUID:-1000}:${PGID:-100}'
     environment:
       - 'TZ=${TZ:-Asia/Shanghai}'
       - 'MYSQL_ROOT_PASSWORD=${SEAFILE_DB_PASSWORD:-password}'
@@ -18,7 +17,6 @@ services:
   seafile-index:
     image: elasticsearch:${SEAFILE_INDEX_IMAGE_VERSION:-latest}
     restart: unless-stopped
-    user: '${PUID:-1000}:${PGID:-100}'
     environment:
       - 'TZ=${TZ:-Asia/Shanghai}'
       - 'discovery.type=single-node'
@@ -29,7 +27,6 @@ services:
   seafile:
     image: 'docker.seadrive.org/seafileltd/seafile-pro-mc:${SEAFILE_IMAGE_VERSION:-latest}'
     restart: unless-stopped
-    user: '${PUID:-1000}:${PGID:-100}'
     environment:
       - 'TZ=${TZ:-Asia/Shanghai}'
       - 'TIME_ZONE=${TZ:-Asia/Shanghai}'
