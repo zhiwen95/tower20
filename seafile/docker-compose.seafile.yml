@@ -27,7 +27,7 @@ services:
     volumes:
       - '${SEAFILE_VOLUME:-.}/index/data:/usr/share/elasticsearch/data'
   seafile:
-    image: seafileltd/seafile-pro-mc:${SEAFILE_IMAGE_VERSION:-latest}
+    image: 'docker.seadrive.org/seafileltd/seafile-pro-mc:${SEAFILE_IMAGE_VERSION:-latest}'
     restart: unless-stopped
     user: '${PUID:-1000}:${PGID:-100}'
     environment:
@@ -43,7 +43,7 @@ services:
       - '8084:80'
       # - "443:443"  # If https is enabled, cancel the comment.
     volumes:
-      - ${SEAFILE_VOLUME:-.}/data:/shared
+      - '${SEAFILE_VOLUME:-.}/data:/shared'
     depends_on:
       - seafile-db
       - seafile-cache
