@@ -1,0 +1,50 @@
+services:
+  seafile-db:
+    image: 'mariadb:${SEAFILE_DB_IMAGE_VERSION:-latest}'
+    restart: unless-stopped
+    user: '${PUID:-1000}:${PGID:-100}'
+    environment:
+      - 'TZ=${TZ:-Asia/Shanghai}'
+      - 'MYSQL_ROOT_PASSWORD=${SEAFILE_DB_PASSWORD:-password}'
+      - 'MYSQL_LOG_CONSOLE=true'
+    volumes:
+      - '${SEAFILE_VOLUME:-.}/db/data:/var/lib/mysql'
+  seafile-cache:
+    image: 'memcached:${SEAFILE_CACHE_IMAGE_VERSION:-latest}'
+    restart: unless-stopped
+    environment:
+      - 'TZ=${TZ:-Asia/Shanghai}'
+    entrypoint: 'memcached -m ${SEAFILE_CACHE_MEMORY:-256}'
+  seafile-index:
+    image: elasticsearch:${SEAFILE_INDEX_IMAGE_VERSION:-latest}
+    restart: unless-stopped
+    user: '${PUID:-1000}:${PGID:-100}'
+    environment:
+      - 'TZ=${TZ:-Asia/Shanghai}'
+      - 'discovery.type=single-node'
+      - 'bootstrap.memory_lock=true'
+      - 'ES_JAVA_OPTS=${SEAFILE_INDEX_JAVA_OPTS:--Xms1g -Xmx1g}'
+    volumes:
+      - '${SEAFILE_VOLUME:-.}/index/data:/usr/share/elasticsearch/data'
+  seafile:
+    image: docker.seadrive.org/seafileltd/seafile-pro-mc:${SEAFILE_IMAGE_VERSION:-latest}
+    restart: unless-stopped
+    user: '${PUID:-1000}:${PGID:-100}'
+    environment:
+      - 'TZ=${TZ:-Asia/Shanghai}'
+      - 'TIME_ZONE=${TZ:-Asia/Shanghai}'
+      - 'DB_HOST=seafile-db'
+      - 'DB_ROOT_PASSWD=${SEAFILE_DB_PASSWORD:-password}'
+      - SEAFILE_ADMIN_EMAIL=${SEAFILE_ADMIN_EMAIL:=me@example.com}
+      - SEAFILE_ADMIN_PASSWORD=${SEAFILE_ADMIN_PASSWORD:=asecret}
+      - SEAFILE_SERVER_LETSENCRYPT=false # Whether to use https or not
+      - SEAFILE_SERVER_HOSTNAME=example.seafile.com # Specifies your host name if https is enabled
+    ports:
+      - "8084:80"
+      # - "443:443"  # If https is enabled, cancel the comment.
+    volumes:
+      - ${SEAFILE_VOLUME:-.}/data:/shared
+    depends_on:
+      - seafile-db
+      - seafile-cache
+      - seafile-index
