@@ -27,7 +27,7 @@ services:
     volumes:
       - '${SEAFILE_VOLUME:-.}/index/data:/usr/share/elasticsearch/data'
   seafile:
-    image: docker.seadrive.org/seafileltd/seafile-pro-mc:${SEAFILE_IMAGE_VERSION:-latest}
+    image: seafileltd/seafile-pro-mc:${SEAFILE_IMAGE_VERSION:-latest}
     restart: unless-stopped
     user: '${PUID:-1000}:${PGID:-100}'
     environment:
