@@ -6,8 +6,10 @@ services:
       - 'TZ=${TZ:-Asia/Shanghai}'
       - 'UID=${PUID:-1000}'
       - 'GID=${PGID:-100}'
+      - 'MASK=${UMASK:-000}'
       - 'PUID=${PUID:-1000}'
       - 'PGID=${PGID:-100}'
+      - 'UMASK=${UMASK:-000}'
     ports:
       - '8083:80'
     volumes:
