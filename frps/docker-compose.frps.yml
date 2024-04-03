@@ -1,0 +1,19 @@
+services:
+  frps:
+    image: 'snowdreamtech/frps:${FRPS_IMAGE_VERSION:-latest}'
+    restart: unless-stopped
+    environment:
+      - 'TZ=${TZ:-Asia/Shanghai}'
+      - 'PUID=${PUID:-1000}'
+      - 'PGID=${PGID:-100}'
+      - 'UMASK=${UMASK:-000}'
+    ports:
+      - '7000:7000'
+      - '7080:7080'
+      - '7443:7443'
+      - '7500:7500'
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - ${FRPS_VOLUME:-.}/conf:/etc/frp
+      - ${FRPS_VOLUME:-.}/logs:/var/log/frps

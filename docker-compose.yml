@@ -4,3 +4,4 @@ include:
   - path: 'filebrowser/docker-compose.filebrowser.yml'
   - path: 'seafile/docker-compose.seafile.yml'
   - path: 'netdata/docker-compose.netdata.yml'
+  - path: 'frps/docker-compose.frps.yml'
