@@ -9,7 +9,7 @@ services:
       - UPDATE=weekly
       - DNS_SERVERNAME=PaoPaoDNS,blog.03k.org
       - DNSPORT=53
-      - CNAUTO=yes
+      - CNAUTO=${PAOPAO_DNS_CNAUTO:-yes}
       - CNFALL=yes
       - CN_TRACKER=yes
       - USE_HOSTS=no
