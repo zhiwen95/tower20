@@ -20,5 +20,5 @@ services:
       - AUTO_FORWARD_CHECK=yes
       - USE_MARK_DATA=yes
       - HTTP_FILE=yes
-      - RULES_TTL=600
+      - RULES_TTL=300
     network_mode: "host"
