@@ -22,4 +22,9 @@ services:
       - USE_MARK_DATA=yes
       - HTTP_FILE=yes
       - RULES_TTL=300
-    network_mode: "host"
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+      - "5304:5304/udp"
+      - "5304:5304/tcp"
+      - "7889:7889/tcp"
