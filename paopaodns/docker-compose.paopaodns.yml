@@ -1,6 +1,7 @@
 services:
   paopaodns:
     image: sliamb/paopaodns:latest
+    user: '${PUID:-1000}:${PGID:-100}'
     restart: unless-stopped
     volumes:
       - '${PAOPAO_DNS_VOLUME:-.}/data:/data'
