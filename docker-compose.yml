@@ -3,6 +3,5 @@ include:
   - path: 'qbittorrent/docker-compose.qbittorrent.yml'
   - path: 'filebrowser/docker-compose.filebrowser.yml'
   - path: 'seafile/docker-compose.seafile.yml'
-  - path: 'netdata/docker-compose.netdata.yml'
   - path: 'frps/docker-compose.frps.yml'
   - path: 'paopaodns/docker-compose.paopaodns.yml'
