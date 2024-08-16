@@ -8,10 +8,7 @@ services:
       - 'PGID=${PGID:-100}'
       - 'UMASK=${UMASK:-000}'
       - 'WEBUI_PORT=8081'
-    ports:
-      - '8081:8081'
-      - '18081:18081'
-      - '18081:18081/udp'
+    network_mode: host
     volumes:
       - ${QBITTORRENT_PT_VOLUME:-.}/conf:/config
       - ${QBITTORRENT_PT_VOLUME:-.}/incomplete:/mnt/incomplete
