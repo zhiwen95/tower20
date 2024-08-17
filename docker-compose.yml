@@ -6,3 +6,4 @@ include:
   - path: 'frps/docker-compose.frps.yml'
   - path: 'paopaodns/docker-compose.paopaodns.yml'
   - path: 'node-exporter/docker-compose.node-exporter.yml'
+  - path: 'gh-proxy/docker-compose.gh-proxy.yml'
