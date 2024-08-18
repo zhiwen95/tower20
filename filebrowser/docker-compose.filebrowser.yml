@@ -1,7 +1,7 @@
 services:
   filebrowser:
     image: 'filebrowser/filebrowser:${FILEBROWSER_IMAGE_VERSION:-s6}'
-    restart: unless-stopped
+    restart: always
     environment:
       - 'TZ=${TZ:-Asia/Shanghai}'
       - 'UID=${PUID:-1000}'
