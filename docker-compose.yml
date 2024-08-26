@@ -5,3 +5,4 @@ include:
   - path: 'seafile/docker-compose.seafile.yml'
   - path: 'frps/docker-compose.frps.yml'
   - path: 'node-exporter/docker-compose.node-exporter.yml'
+  - path: 'ikuai-exporter/docker-compose.ikuai-exporter.yml'

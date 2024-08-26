@@ -1,0 +1,11 @@
+services:
+  ikuai-exporter:
+    image: 'jakes/ikuai-exporter:${IKUAI_EXPORTER_IMAGE_VERSION:-latest}'
+    restart: always
+    environment:
+      - 'TZ=${TZ:-Asia/Shanghai}'
+      - 'IK_URL=${IK_URL:-http://10.8.8.1}'
+      - 'IK_USER=${IK_USER:-exporter}'
+      - 'IK_PWD=${IK_PWD:-exporter}'
+    ports:
+      - '9090:9090'
