@@ -6,4 +6,3 @@ include:
   - path: 'frps/docker-compose.frps.yml'
   - path: 'node-exporter/docker-compose.node-exporter.yml'
   - path: 'ikuai-exporter/docker-compose.ikuai-exporter.yml'
-  - path: 'ani-rss/docker-compose.ani-rss.yml'
